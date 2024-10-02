@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#flex-display {
+    display: flex; /*Ativa o display flex*/
+    background-color: aqua;
+    min-height: 100vh;
+    width: 100%;
+
+    /*DIREÇÕES
+
+    flex-direction: row-reverse; - Faz a direção do bloco ser da esquerda pra direita em vez do padrão que é da esquerda para direita
+    flex-direction: column; - A direção passa a ser de cima para baixo
+    flex-direction: column-reverse; - A direção passa a ser de baixo para cima*/
+
+    /*JUSTIFY-CONTENT
+
+    justify-content: flex-end; Alinha o contéudo no final do display , o padrão é o flex-start
+    justify-content: center; Alinha o contéudo no meio do display
+    justify-content: space-between; Cria um espaço entre os elementos na horizontal dividindo igualmente o espaço
+    justify-content: space-around; Cria um espaço aos lados de cada elemento*/
+
+    /*ALIGN-ITEMS
+
+    align-items: flex-start;  Alinha os contéudos no topo do display
+    align-items: flex-end;  Alinha os contéudos na parte de baixo do display
+    align-items: stretch; estica os contéudos
+    align-items: center; centraliza os contéudos*/
+
+    justify-content: space-around;
+
+    #texto {
+        display: flex;
+        align-self: center;
+        h1 {
+            font-size: 50px;
+            border: 2px solid white;
+        }
+    }
+
+    .imagens {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        div {
+            display: flex;
+            border: 2px dashed white;
+            width: 300px;
+            height:200px;
+            padding: 10px;
+            justify-content: space-around;
+            align-self: flex-start; /* com o uso de "self" - Você meio que sobre-escrever alguma função para algum elemento fazendo com que fique diferente dos demais elementos*/
+            align-items: center;
+        }
+    }
+
+    img {
+        display: flex;
+        height: 80px;
+        width: 65px;
+        border: 2px solid blueviolet;
+    }
+
+    /* ORDER
+    Aqui pra frente eu defini a ordem das divs e a ordem das imagens da div back tudo com a tag "order" para funcionar você deve definir o valor da tag order em todos*/
+
+    #front {
+        order: 3;
+    }
+
+    #aprender {
+        order: 1;
+        flex-wrap: wrap; /*O flex wrap faz com que caso passe o tamanho limite do width ele pule linha isso quando o valor é wrap, já quando o valor é wrap-invert ele faz como diz, inverte os lados resumidamente*/
+        align-content: space-between; /*A tag align-content já mexe com as linhas que são criadas com o wrap, elas definem como serão as linhas nesse caso usa o space-between entre as linhas*/
+    }
+
+    #back {
+        order: 2;
+        #python-order {
+            order: -1; /*O '-1' faz com que este item pule para frente dos itens sem order, mas se colocar o 1 ele vai para trás dos itens sem a tag order*/
+        }
+    }
+
+    /*
+    Em vez de criar um id/class e fazer as alterações por ela, pode fazer pelo seguinte jeito: 
+    img:nth-of-type(2){
+        display: flex;
+        flex-grow: 3;
+    }
+    O "img:nth-of-type(2)" faz com que a cada duas imagens a segunda sofra as alterações. O flex-grow fala o quanto elemento vai crescer com relação ao resto dos flex elementos dentro do espaço (vai de 0 até 10,)padrão é 0 */
+
+    /*
+    mg:nth-of-type(2){
+        flex-shrink: 8;
+    } A função shrink é o oposto do flex-grow. e funciona apenas quando não tem mais espaço para os componentes, é bom com responsabilidade pelo jeito o padrão é zero também */
+
+    /*
+    FLEX GROW/SHRINK/BASIS
+    Com combinação do flex-grow e flex-shrink existe o flex-basis que defini o tamanho inicial de um item que seja flexivel(que tenha flex-grow/shrink) e se não for flexivel não faz diferença 
+    Se tiver um min-width o flex-basis vai respeitar o valor do min-width, mesma coisa serve pro max-width.*/
+
+    /*OTIMIZAÇÔES
+
+    - grow/shrink/basis
+    Para simplificar esses 3 é só utilizar a tag 'flex: a b c' onde o 'a' é o valor do flex-grow, 'b' o valor de flex-shrink e o 'c' o valor de flex-basis
+    
+    - direction/wrap
+    Para simplificar esses 2 só utilizar a tag "flex-flow: 'a' 'b' " onde o "a" é o valor do flex-direction e o "b" o valor do flex-wrap
+    */
+
+}
